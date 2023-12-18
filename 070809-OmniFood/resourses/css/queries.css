@@ -1,0 +1,219 @@
+/*
+IMPLEMENTANCION DE MEDIA QUERIES:
+
+1°). @media
+
+2°). only screen (solo pantalla)
+
+3°). Luego definimos el ancho (max-width: px) . OBS: Lo establecemos en px
+
+4°). Finalmente definimos todos nuestros estilos dentro del bloque de declaracion { }  */
+
+
+/* =========================================================================================================== */
+
+
+/*  Desktop: from 1024px to 1200px.  --> Configuración para computadoras.
+
+OBS: La razon de porque 1200px, es porque nuestra fila, se definió como 1140px. Y entonces queremos que el sitio web cambie su aspecto cuando se acerque a ese valor, de modo que siempre tengamos algunos márgenes en el lado derecho e izquierdo. OBS: Las reglas de estilo que irán dentro de éste bloque de declaracion, se aplicarán cuando el ancho del dispositivo sea entre 1024px y 1200px (inclusive)  */
+@media only screen and (max-width: 1200px) {
+
+   .hero-text-box {
+      width: 100%;
+      padding: 0 2%;
+   }
+
+   .row {
+      padding: 0 2%;
+   }
+
+}
+
+
+/* =========================================================================================================== */
+
+
+/* Big tablets: from 768px to 1023px. --> Configuración para tabletas grandes.
+
+OBS: Las reglas de estilo que irán dentro de éste bloque de declaracion, se aplicarán cuando el ancho del dispositivo sea entre 768px y 1023px (inclusive)  */
+@media only screen and (max-width: 1023px) {
+
+   html {
+      font-size: 18px;
+   }
+
+   section {
+      padding: 70px 0;
+   }
+
+   footer {
+      font-size: 80%;
+      padding: 30px 5px;
+   }
+
+   .footer-nav li {
+      margin-right: 17px;
+   }
+
+   .steps-box:last-child {
+      margin-top: 40px;
+   }
+
+   .icon-small {
+      width: 17px;
+      margin-right: 5px;
+   }
+
+   .city-feature {
+      font-size: 88%;
+   }
+
+   .plan-box {
+      width: 100%;
+      margin-left: 0;
+   }
+
+   .contact-form {
+      width: 90%;
+   }
+
+}
+
+
+/* =========================================================================================================== */
+
+
+/* Small tablets: from 481px to 767px. --> Configuración para tabletas pequeñas.
+
+OBS: Las reglas de estilo que irán dentro de éste bloque de declaracion, se aplicarán cuando el ancho del dispositivo sea entre 480px y 767px (inclusive). */
+@media only screen and (max-width: 767px) {
+
+   html {
+      font-size: 16px;
+   }
+
+   section {
+      padding: 30px 0;
+   }
+
+   h1 {
+      font-size: 180%;
+   }
+
+   h2 {
+      font-size: 150%;
+   }
+
+   .row, .hero-text-box {
+      padding: 0 4%;
+   }
+
+   /*  Esta clase es sacada del archivo 'grid.css' (GRID COLUMN SETUP) . OBS: Al aplicarle a cada columna un ancho del 100%, éstas se colocan una debajo de la otra */
+   .col {
+      width: 100%;
+      margin: 0 0 4% 0;  /* Margen modificado del archivo original 'grid.css' para que haya mas separación de bottom entre las columnas  */
+   }
+
+
+   .main-nav {   /* Desaparece la barra principal de navegacion para luego aplicarle un efecto de JQuery*/
+      display: none;
+   }
+
+   .mobile-nav-icon {
+      display: inline-block;
+   }
+
+   .main-nav {
+      float:left;
+      margin-top: 35px;
+      margin-left: 25px;
+   }
+
+   .main-nav li {
+      display: block;
+   }
+
+   .main-nav li a:link,
+   .main-nav li a:visited {
+      display: block;
+      font-size: 100%;
+      border: 0;   /* OBS: No deben tener border porque en un telefono no podemos pasas el mouse por encima. */
+      padding: 10px 0;
+   }
+
+   .sticky .main-nav {
+      margin-top: 10px;
+   }
+
+   .sticky .main-nav li a:link,
+   .sticky .main-nav li a:visited {
+      padding: 10px 0;
+   }
+
+   .sticky .mobile-nav-icon {
+      margin-top: 10px;
+   }
+   .sticky .mobile-nav-icon i {
+      color: #555;
+   }
+
+
+   .long-copy {
+      width: 100%;
+      margin-left: 0;
+   }
+
+   .steps-box:first-child {
+      text-align: center;
+      margin-left: 2%;
+      margin-top: 2%;
+   }
+
+   .app-screen {
+      width: 30%;
+   }
+
+   .works-step p {
+      display: inline-block;
+      position: absolute;
+      margin-top: 1%;
+   }
+
+   .works-step div {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+      padding: 4px;
+      font-size: 120%;
+      vertical-align: middle;
+      float: none;
+   }
+
+   .works-step {
+      margin-bottom: 20px;
+   }
+
+   .works-step:last-of-type {
+      margin-bottom: 30px;
+   }
+
+}
+
+
+/* =========================================================================================================== */
+
+
+/* Small phones: from 0px to 480px. --> Configuración para telefonos pequeños.
+
+OBS: Las reglas de estilo que irán dentro de éste bloque de declaracion, se aplicarán cuando el ancho del dispositivo sea entre 0 y 480px (inclusive) */
+@media only screen and (max-width: 480px) {
+
+   section {
+      padding: 25px 0;
+   }
+
+   .contact-form {
+      width: 100%;
+   }
+
+}

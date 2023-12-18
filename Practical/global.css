@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  --h1: "Helvetica Neue";
+  --text-medium-text: Lato;
+
+  /* font sizes */
+  --text-big-size: 20px;
+  --text-size: 14px;
+  --font-size-xs: 12px;
+  --button-size: 16px;
+  --text-medium-text-size: 17px;
+  --h3-size: 24px;
+  --h2-size: 40px;
+  --h1-size: 60px;
+
+  /* Colors */
+  --background-1: #000;
+  --gray-3: #828282;
+  --black: #232632;
+  --dark-2: #191b23;
+  --white: #fff;
+  --additional-dark: #3b5266;
+  --grey1: #8298ab;
+  --purple: #7b61ff;
+  --gray-6: #f2f2f2;
+  --grey: #ebedf2;
+  --color-yellowgreen: #72ce47;
+  --background-3: #646464;
+  --color-dimgray-100: #4f4f4f;
+  --color-silver-100: #bdbdbd;
+  --gap-5xl: 24px;
+  --gap-5xs: 8px;
+  --gap-base: 16px;
+  --gap-9xs: 4px;
+  --gap-3xs: 10px;
+
+  --padding-5xs: 8px;
+  --padding-base: 16px;
+  --padding-11xs: 2px;
+  --padding-7xs: 6px;
+  --padding-3xs: 10px;
+
+  --br-3xs: 10px;
+  --br-8xs: 5px;
+}

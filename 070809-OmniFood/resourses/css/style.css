@@ -1,0 +1,660 @@
+/*
+
+Orange Color: #e67e22
+
+*/
+
+
+/* ================================================================================================= */
+/*  BASIC SETUP (Configuración Básica)*/
+/* ================================================================================================= */
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   background-color: #fff;
+   color: #555;
+   font-family: 'Lato', sans-serif;
+   font-weight: 300;  /* Tamaño del grueso de la fuente */
+   font-size: 20px;
+   text-rendering: optimizeLegibility;  /* Optimiza de legibilidad de la fuente de forma perfecta */
+   /* overflow-x: hidden;  --> https://www.w3schools.com/cssref/css3_pr_overflow-x.asp */
+}
+
+
+/* ================================================================================================= */
+/*  REUSABLE COMPONENTS (Componentes Reutilizables que utilizaremos en todo el sitio web) */
+/* ================================================================================================= */
+
+.row {
+   max-width: 1140px;  /* El ancho máximo absoluto de la fila es de 1140px */
+   margin: 0 auto;   /* Fila centrada */
+}
+
+section {  /* Configuracion para el tamaño de los espacios entre las distintas secciones */
+   padding: 80px 0;
+}
+
+.box {
+   padding: 1%;
+}
+
+
+/* ------ HEADINGS (Encabezados) ------ */
+
+h1, h2, h3 {
+   font-weight: 300;
+   text-transform: uppercase;
+}
+
+h1 {
+   font-size: 240%;
+   word-spacing: 4px;
+   margin-top: 0;
+   margin-bottom: 20px;
+   color: #fff;
+   letter-spacing: 1px;
+}
+
+h2 {
+   font-size: 180%;
+   word-spacing: 2px;
+   margin-bottom: 30px;
+   text-align: center;
+   letter-spacing: 1px;
+}
+
+h3 {
+   font-size: 110%;
+   margin-bottom: 15px;
+}
+
+/* Inserción de un contenido que va aparecer despues del elemento h2. OBS: "Es como si fuera un elemento" */
+h2::after {
+   display: block;
+   height: 2px;
+   background-color: #e67e22;
+   content: " ";
+   width: 100px;
+   margin: 0 auto;
+   margin-top: 30px;
+}
+
+
+/* ------ PARAGRAPHS (Párrafos) ------ */
+
+.long-copy {
+   line-height: 145%;  /* Altura de la linea. OBS: Por regla tipográfica, el tamaño debe ir entre 120 y 145px. */
+   width: 70%;
+   text-align: center;
+   margin: 0 auto;
+}
+
+.box p {
+   font-size: 90%;
+   line-height: 145%;
+}
+
+
+/* ------ ICONS (Iconos) ------ */
+
+.icon-big {
+   display: inline-block;   /* Lo convierto en elemento de semi-bloque para poder aplicarle un margin-bottom */
+   font-size: 350%;
+   color: #e67e22;
+   margin-bottom: 15px;
+}
+
+.icon-small {
+   display: inline-block;
+   font-size: 120%;
+   width: 30px;
+   text-align: center;
+   color: #e67e22;
+   margin-right: 10px;
+   /* propiedades para alinear un icono con un texto: 'line-height', 'vertical-align' y 'margin-top' */
+   line-height: 120%;
+   vertical-align: middle;
+   margin-top: -5px;
+}
+
+
+/* ------ BUTTONS (Botones) ------ */
+
+/* Configuración para que el estilo de los botones se vean iguales en su estado normal y visitado */
+.btn:link,
+.btn:visited {
+   display: inline-block;  /* Lo convierto a elemento de semi-bloque para poder aplicarle un relleno (padding) */
+   padding: 10px 30px;
+   font-weight: 300;
+   text-decoration: none;  /* Elimina el subrayado de un enlace */
+   border-radius: 200px;  /* Redondea los bordes del elemento */
+   -webkit-transition: background-color 0.5s, border 0.5s, color 0.5s;
+   transition: background-color 0.5s, border 0.5s, color 0.5s;  /* Transition permite que las propiedades que se le implementan se ejecuten en un periodo de tiempo establecido */
+}
+
+.btn-full:link,
+.btn-full:visited {
+   background-color: #e67e22;
+   border: 1px solid #e67e22;
+   color: #fff;
+   margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+   border: 1px solid #e67e22;
+   color: #e67e22;
+}
+
+/* Configuración para que el estilo de los botones se vean iguales al pasar el cursor sobre ellos y al hacer clic */
+.btn:hover,
+.btn:active {
+   background-color: #cf6d17;
+}
+
+.btn-full:hover,
+.btn-full:active {
+   border: 1px solid #cf6d17;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+   border: 1px solid #cf6d17;
+   color: #fff;
+}
+
+
+/* ================================================================================================= */
+/*  Section 0: HEADER (Encabezado) */
+/* ================================================================================================= */
+
+header {
+   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/hero.jpg);
+   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero.jpg); /*Imagen 70% oscura */
+   background-size: cover;  /* Para que la imagen se vea completa y ocupe todo el ancho del navegador */
+   background-position: center;  /* Para que la imagen se vea centrada */
+   background-attachment: fixed;  /* Efecto: La imagen queda fija mientras escroleamos.*/
+   height: 100vh;  /* Para que la imagen ocupe todo el alto del navegador */
+   position: relative;
+}
+
+.hero-text-box {    /*  Caja centrada vertical y horizontalmente en posición absoluta */
+   position: absolute;
+   width: 1140px;   /*  Debe tener el mismo ancho de la fila */
+   top: 50%;
+   left: 50%;
+   -webkit-transform: translate(-50%, -50%);
+           transform: translate(-50%, -50%);   /* Traduce el elemento a la mitad de su ancho y de su altura, hacia arriba y a la izquierda */
+}
+
+.logo-white {
+   width: auto;  /* ¿POR QUÉ VA UN ANCHO AUTOMATICO?, para que no se distorcione la imagen??? */
+   height: 100px;
+   float: left;
+   margin-top: 20px;
+}
+
+.logo-black{
+   display: none;
+   width: auto;
+   height: 50px;
+   float: left;
+   margin: 5px 0;
+}
+
+
+/* Main bar navigation */
+.main-nav {
+   float: right;
+   list-style: none;  /* Elimina los puntos de los items de la lista */
+   margin-top: 55px;
+}
+
+.main-nav li {
+   display: inline-block; /* Lo convierto en elemento de semi-bloque para que los items se ubiquen uno al lado del otro */
+   margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+   padding: 8px 0;
+   color: #fff;
+   text-decoration: none;  /* Elimina el subrayado de los enlaces */
+   text-transform: uppercase;  /* Transforma el texo en MAYUSCULA */
+   font-size: 90%;   /* 90% == 18px */
+   border-bottom: 2px solid transparent;  /* ¿Es necesario? PROBAR!.*/
+   -webkit-transition: border-bottom 0.5s;
+   transition: border-bottom 0.5s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+   border-bottom: 2px solid #e67e22;
+}
+
+
+/* Mobile navigation  */
+.mobile-nav-icon {
+   display: none;
+   float: right;
+   margin-top: 30px;
+   cursor: pointer;  /*Se aplica el tipo de cursor:pointer porque debemos eliminar el atributo href del elemento <a> */
+}
+
+.mobile-nav-icon i {
+   font-size: 200%;
+   color: #fff;
+}
+
+
+/* Sticky bar navigation  */
+.sticky {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: rgba(250, 250, 250, 0.98);
+   box-shadow: 0 2px 2px #efefef;
+   z-index: 9999; /* 9999 es el maximo valor para que un elemento sea SIEMPRE visible cuando pasa por encima de otro */
+}
+
+.sticky .main-nav {
+   margin-top: 15px;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+   padding: 15px 0;
+   color: #555;
+}
+
+.sticky .logo-white {
+   display: none;
+}
+
+.sticky .logo-black {
+   display: block;
+}
+
+/* ================================================================================================= */
+/*  Section 1: FEATURES (Características) */
+/* ================================================================================================= */
+
+.section-features .long-copy {
+   margin-bottom: 30px;
+}
+
+
+/* ================================================================================================= */
+/*  Section 2: FAVOURITES MEALS (Comidas Favoritas) */
+/* ================================================================================================= */
+
+.section-meals {
+   padding: 0;
+   overflow: hidden;  /* Corto la flotación. OBS: Siempre que hay flotacion, debemos aplicarle a su contenedor padre la propiedad overflow:hidden */
+}
+
+.meals-showcase {
+   list-style: none;
+   width: 100%;  /*  Para que la "fila" ocupe el 100% del ancho del navegador */
+}
+
+.meals-showcase li {
+   display: block;  /* IMPORTANTE: Implemento al elemento <li> como elemento de bloque porque no en todos los navegadores esta defninido como bloque, sino como un elemento subordinado (que no es ni de Bloque ni en Linea) */
+   float: left;
+   width: 25%;
+}
+
+.meal-photo {
+   width: 100%;  /* Para que el elemento <figure> sea exactamente tann ancho como su contenedor padre (.meals-showcase li)  */
+   margin: 0; /* Debemos aplicarle 'margin: 0' porque sucede lo mismo que con el <h1> por causa del archivo 'normalize.css' */
+   overflow: hidden;  /* para que la imagen independientemente de la escala de tamaño que tenga establecida, entre perfectamente en el contenedor (.meal-photo) */
+   background-color: #000;  /* Establezco de color negro el color de fondo que hay detras de la imagen. Para que el color de fondo negro haga efecto sobre la imagen, debo aplicarle a la imagen un valor de opacidad (Oscurecimiento)*/
+}
+
+.meal-photo img {
+   width: 100%;  /* Para que el elemento <img> sea exactamente tann ancho como su contenedor padre (.meal-photo) */
+   height: auto;  /* La altura de la imagen se establecerá automaticamente */
+   -webkit-transform: scale(1.15);
+   transform: scale(1.15); /* Reestrablezco el tamaño de la imagen a 115% en lugar de 100%. IMPORTANTE: para que la imagen se vea correctamente 115% grande dentro de su contenedor, debemos aplicarle a su CONTENEDOR PADRE la propiedad 'overflow: hidden;' */
+   opacity: 0.7;  /* Oscurezco la imagen en negro a un 70% . OBS: Cuanto menos es el valor, más oscura se ve la imagen . La imagen se oscureze en negro porque a su contenedor padre (.meal-photo) le aplique la propiedad 'background-color: #000' */
+   -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+   transition: opacity 0.5s, -webkit-transform 0.5s;
+   transition: transform 0.5s, opacity 0.5s;
+   transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.meal-photo img:hover {
+   -webkit-transform: scale(1.03);
+   transform: scale(1.03);  /* Reestrablezco el tamaño de la imagen a 103% y no al 100% para que la linea blanca que aparece debajo de la imagen, no aparezca al pasar el cursor sobre la imagen */
+   opacity: 1;
+}
+
+
+/* ================================================================================================= */
+/*  Section 3: HOW IT WORKS (Cómo funciona - Instruccines) */
+/* ================================================================================================= */
+
+.section-steps {
+   background-color: #f4f4f4;
+}
+
+.steps-box:first-child {  /* Hace referencia a la PRIMERA columna!!! (Al mismo <div class="col span-1-of-2 steps-box">) */
+   margin-top: 30px;
+   text-align: right;  /*  text-align no solo funciona para un texto, sino tambien para TODOS los elementos en linea o de semi-bloque.*/
+   padding-right: 3%; /* Uso porcentajes porque queremos que nuestro diseño web sea receptivo/fluido. OBS: Los px establecen un valor fijo y no se adaptan de manera receptiva/fluida a los distintos tamaños de otros dispositivos */
+}
+
+.steps-box:last-child {   /* Hace referencia a la SEGUNDA columna!!! (Al mismo <div class="col span-1-of-2 steps-box">)*/
+   margin-top: 70px;
+   padding-left: 3%;
+   overflow: hidden;
+}
+
+.app-screen {
+   width: 40%;
+}
+
+.works-step {
+   margin-bottom: 50px;
+}
+
+.works-step div {
+   display: inline-block;
+   color: #e67e22;
+   border: 2px solid #e67e22;
+   border-radius: 50%;
+   width: 52px;
+   height: 52px;
+   text-align: center;
+   padding: 5px;
+   float: left;
+   font-size: 150%;
+   margin-right: 25px;
+}
+
+.works-step:last-of-type {   /* Hace referencia al ULTIMO elemento con clase works-step --> <div class="works-step"> */
+   margin-bottom: 80px;
+}
+
+.btn-app img {
+   width: auto;
+   height: 50px;
+   margin-right: 10px;
+}
+
+
+/* ================================================================================================= */
+/*  Section 4: CITIES (Ciudades) */
+/* ================================================================================================= */
+
+.box .city-photo {
+   width: 100%;
+   height: auto;
+   margin-bottom: 15px;
+}
+
+.city-feature {
+   margin-left: 5px;
+   margin-bottom: 10px;
+}
+
+.city-feature a:link,
+.city-feature a:visited {
+   color: #e67e22;
+   text-decoration: none;
+   padding-bottom: 1px;
+   border-bottom: 1px solid #e67e22;
+   -webkit-transition: border-bottom 0.3s, color 0.3s;
+   transition: border-bottom 0.3s, color 0.3s;
+}
+
+.city-feature a:hover,
+.city-feature a:active {
+   color: #555;
+   border-bottom: 1px solid transparent;
+}
+
+
+/* ================================================================================================= */
+/*  Section 5: TESTIMONIALS (Testimonios) */
+/* ================================================================================================= */
+
+
+.section-testimonials {
+   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.8))), url(img/back-customers.jpg);
+   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(img/back-customers.jpg);
+   background-size: cover;
+   color: #fff;
+   background-attachment: fixed;  /* Efecto: La imagen queda fija mientras escroleamos.*/
+}
+
+blockquote {
+   padding: 2%;
+   font-style: italic;  /* OBS: puedo usar el valor italic en la fuente Lato porque fue descargada en italic */
+   line-height: 145%;
+   margin-top: 40px;
+   position: relative;
+}
+
+blockquote::before {  /* Agrega un contenido antes del elemento <blockquote> */
+   display: block;
+   content: "\201C";
+   font-size: 500%;
+   position: absolute; /* IMPORTANTE: cuando le aplicamos a un elemento 'position: absolute', tenemos que establecer a su contenedor padre en 'position: relative' */
+   top: -5px;
+   left: -5px;
+}
+
+cite {
+   display: block;
+   font-size: 90%;
+   margin-top: 25px;
+}
+
+cite img {
+   width: 45px;
+   height: 45px;
+   border-radius: 50%;
+   margin-right: 10px;
+   /* propiedad para alinear una imagen con un texto: 'vertical-align' */
+   vertical-align: middle;
+}
+
+
+/* ================================================================================================= */
+/*  Section 6: PLANS (Planes) */
+/* ================================================================================================= */
+
+.section-plans {
+   background-color: #f4f4f4;
+}
+
+.plan-box {
+   background-color: #fff;
+   border-radius: 5px;
+   width: 90%;
+   margin: 0 auto;  /* ó margin-left: 5%; --> De esta manera el elemento con clase plan-box queda centrado */
+   /* Efecto de sombra */
+   box-shadow: 0 2px 2px #efefef;  /* 1er valor: eje x. 2do valor eje y. 3er valor: desenfoque y 4to valor: color */
+}
+
+.plan-box div {
+   padding: 15px;
+   border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-box div:first-child {
+   background-color: #fcfcfc;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+
+.plan-box div:last-child {
+   text-align: center;
+   border: 0;
+}
+
+.plan-price {
+   font-size: 300%;
+   color: #e67e22;
+   font-weight: 100;
+   margin-bottom: 10px;
+}
+
+.plan-price span {
+   font-size: 30%;
+   font-weight: 300;
+}
+
+.plan-price-meal {
+   font-size: 80%;
+}
+
+.plan-box ul {
+   list-style: none;
+}
+
+.plan-box ul li {
+   padding: 5px 0;
+}
+
+
+/* ================================================================================================= */
+/*  Section 7: CONTACT FORM  (Formulario de contacto) */
+/* ================================================================================================= */
+
+.contact-form {
+   width: 60%;
+   margin: 0 auto;  /* ó margin-left: 20%;  --> De esta manera el elemento <form> queda centrado */
+}
+
+input[type=text], input[type=email], select, textarea {
+   width: 100%;
+   padding: 7px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+   font-weight: 300;
+}
+
+textarea {
+   height: 100px;
+}
+
+input[type=checkbox] {
+   margin: 10px 5px 10px 0;
+}
+
+input[type=submit] {
+   cursor: pointer;
+   padding: 10px 25px;
+   font-weight: 300;
+   border-radius: 200px;
+   background-color: #e67e22;
+   border: 1px solid #e67e22;
+   color: #fff;
+   -webkit-transition: background-color 0.5s, border 0.5s, color 0.5s;
+   transition: background-color 0.5s, border 0.5s, color 0.5s;
+}
+
+input[type=submit]:hover,
+input[type=submit]:active {
+   background-color: #cf6d17;
+}
+
+*:focus {
+   outline: none;  /* Elimina el borde azul de los campos del formulario al seleccionarlos */
+}
+
+
+/* ================================================================================================= */
+/*  Section 8: FOOTER  (Pie de pagina) */
+/* ================================================================================================= */
+
+footer {
+   font-size: 80%;
+   background-color: #333;
+   padding: 50px;
+}
+
+footer p {
+   text-align: center;
+   margin-top: 20px;
+   color: #888;
+}
+
+.footer-nav {
+   list-style: none;
+   float: left;
+}
+
+.social-links {
+   list-style: none;
+   float: right;
+}
+
+.footer-nav li,
+.social-links li {
+   display: inline-block;
+   margin-right: 20px;
+}
+
+.footer-nav a:link,
+.footer-nav a:visited,
+.social-links a:link,
+.social-links a:visited {
+   color: #888;
+   text-decoration: none;
+   -webkit-transition: color 0.5s;
+   transition: color 0.5s;
+}
+
+.footer-nav a:hover,
+.footer-nav a:active {
+   color: #ddd;
+}
+
+.social-links a:link,
+.social-links a:visited {
+   font-size: 160%;
+}
+
+.ion-social-facebook,
+.ion-social-twitter,
+.ion-social-googleplus,
+.ion-social-instagram {
+   -webkit-transition: color 0.5s;
+   transition: color 0.5s;
+}
+
+.ion-social-facebook:hover {
+   color: #1877f2;
+}
+
+.ion-social-twitter:hover {
+   color: #1da1f2;
+}
+
+.ion-social-googleplus:hover {
+   color: #db4437;
+}
+
+.ion-social-instagram:hover {
+   color: #c32aa3;
+}
+
+
+/* ================================================================================================= */
+/*  ANIMATIONS (Animaciones)*/
+/* ================================================================================================= */
+
+/* Para que los elementos NO se muestren antes de aplicar la animación. Luego quedan con opacity: 1; */
+.js-animation-features, .js-animation-app-screen, .js-animation-cities {
+   opacity: 0;
+   /* animation-duration: 1s; */    /*  --> Aplica un tiempo de delay a la animacón */
+}
